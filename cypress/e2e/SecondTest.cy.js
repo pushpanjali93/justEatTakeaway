@@ -1,4 +1,6 @@
-import {commands} from "../support/commands";
+import {refinesearch} from "../support/refinesearch";
+import {joblisting} from "../support/joblisting";
+
 
 describe("justEatTakeawayTest",()=>{
    let keyword="Sales";
@@ -11,12 +13,12 @@ beforeEach(()=>{
    cy.visit("https://careers.justeattakeaway.com/global/en/home");
 })
 
-it('searchTest',()=>{
+it('verify sales category',()=>{
 cy.closeCookiePopup();
 cy.clickJobCategory(keyword);
 cy.verifyCategoryClick(searchFilter,searchFilterName);
 cy.verifyJobsNumber(searchFilterName);
-cy.filterSearch(searchCountry,searchCountryName);
+cy.applySearchFilter(searchCountry,searchCountryName);
 cy.verifyJobsNumber(searchCountryName);
 cy.confirmSingleJobCategory(searchFilterName);
 })
